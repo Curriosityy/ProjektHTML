@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">=
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2</title>
+</head>
+<body>
+    <header><h1><a id="logo" href="#" title="Logo"><img src="foto/logo.png" alt="logo"></a></h1>
+      <nav id="menu">
+          <ul>
+              <li><a href="index.html">strona główna</a></li>
+              <li><a href="rejestracja.html">rejestracja</a></li>
+              <li><a href="logowanie.html">logowanie</a></li>
+              <li><a href="kontakt.html">kontakt</a></li>
+          </ul>
+      </nav>
+    </header>
+  <div id="center">
+    <main>
+        <article class="content">
+          <h2>Wszystkie blogi</h2>
+          <div class="container">
+              <section class="item">
+                <div class="post-w-container">
+                  <h3>Tworzenie projektu sfml</h3>
+                  <img src="foto/obraz1.png" alt="tworzenie projektu SFML">
+                <p>W dzisiejszym wpisie będziemy ustawiać projekt w SFML w Visual Studio 15</p>
+                <a href="tworzenie_projektu.html" title="button_czytaj-wiecej"><img src="foto/button_czytaj-wiecej.png" alt="button_czytaj-wiecej"></a>
+              </div>
+            </section>
+              <section class="item">
+                <div class="post-w-container">
+                  <h3>Zarządzanie ekranami</h3>
+                </div>
+              </section>
+          </div>
+        </article>
+        <aside class="bar">
+        <div>
+          <h3>Zegarek</h3>
+          <div id="fCzas"></div>
+          <h3> wyszukaj na blogu</h3>
+          <form action="index.html">
+            <input type="text" name="tags" placeholder="szukaj..."><br>
+            <input type="submit" value="Szukaj">
+          </form>
+        </div>
+        <div>
+          <h3>Najczęściej czytane</h3>
+          <ul>
+            <li><a href="tworzenie_projektu.html">Tworzymy nasz projekt</a></li>
+            <li><a href="#">Zarządzanie ekranami</a></li>
+          </ul>
+        </div>
+      </aside>
+    </main>
+    <footer><h6>na tym blogu dowiesz się jak tworzyć gry w c++, w bibliotece SFML</h6></footer>
+  </div>
+  <script type="text/javascript" src="zegarek.js"></script>
+</body>
+</html>
