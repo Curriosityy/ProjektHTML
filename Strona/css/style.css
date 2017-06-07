@@ -1,0 +1,125 @@
+body
+{
+  background-color: Gray;
+  width: 100%;
+  font-style: normal;
+  font-family: sans-serif;
+  color: #fff;
+
+}
+.btn-link{
+  border:none;
+  outline:none;
+  background:none;
+  cursor:pointer;
+  color:#0000EE;
+  padding:0;
+  text-decoration:underline;
+  font-family:inherit;
+  font-size:inherit;
+}
+#center
+{
+  margin: 0 auto;
+  width: 1100px;
+  overflow: hidden;
+}
+
+header
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #6154EE;
+}
+#logo
+{
+  cursor: pointer;
+  display: inline-block;
+  order: 1;
+}
+#menu
+{
+    position: relative;
+    order: 2;
+}
+#menu ul
+{
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+#menu ul li
+{
+    display: inline-block;
+    width: 100px;
+    float:left;
+    margin-left: 5px;
+    list-style: none;
+    margin-top: 10px;
+    text-align: center;
+    background-color: Black;
+}
+a
+{
+    color:#fff;
+}
+a:hover
+{
+    color:red;
+}
+ul{
+  list-style-type: none;
+}
+.content
+{
+    order: 1;
+    flex-basis: 60%;
+}
+main
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.bar
+{
+    background-color: #2E2E2E;
+    order: 2;
+    flex-basis: 30%;
+}
+article section
+{
+    background-color: #2E2E2E;
+}
+
+
+.container
+{
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+
+}
+.item
+{
+ margin-top: 20px;
+ width: auto;
+ height: 300px;
+}
+.item2
+{
+ margin-top: 20px;
+ width: auto;
+ height: auto;
+}
+textarea
+{
+    width:439px;
+    height:400px;
+    background:#efefef;
+    border:1px solid #dedede;
+
+}
