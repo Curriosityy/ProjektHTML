@@ -22,6 +22,8 @@
                             $dbh = new PDO ('mysql:host=localhost;dbname=blog','root','');
                             $dbh->query("SET NAMES utf8");
                             $sql2 = "SELECT nick,admin FROM konta";
+
+
                             foreach ($dbh->query($sql2) as $kontoadm)
                              {
                                 if(isset($_SESSION['zalogowany']))
@@ -73,13 +75,15 @@
                     <h2>Panel Uzytkowania</h2>
           <div class="container">
               <section class="item2">
-                          <h2>Logowanie</h2>
                 <form method="post">
-                        Login: <input type="text" name="user">
-                        <br>
-                        Hasło: <input type="password" name="password">
-                        <br>
-                        Email: <input type="email" name="email">
+                      Stare Hasło: <input type="password" name="passwords">
+                      <br>
+                      Nowe Hasło: <input type="password" name="passwordn">
+                      <br>
+                      <input type="submit">
+                </form>
+                <form method="post">
+                        Nowy Email: <input type="email" name="email">
                         <br>
                         <input type="submit">
                 </form>
@@ -89,47 +93,51 @@
           try{
             $dbh = new PDO ('mysql:host=localhost;dbname=blog','root','');
             $dbh->query("SET NAMES utf8");
-            if( isset($_POST["user"]) && isset($_POST["password"]) && isset($_POST["email"]) )
+            if(isset($_POST["passwords"]) && isset($_POST["passwordn"]) )
             {
-              $flaga = 3;
-              $login = $_POST["user"];
-              $pass = $_POST["password"];
-              $email = $_POST["email"];
-              $haslohash = hash('sha256',$pass);
-              $sql = 'SELECT nick,email FROM konta';
-              foreach($dbh->query($sql) as $konto)
-              {
-                if($konto['nick'] == $login)
-                {
-                $flaga=3;
-                break;
+              $flaga=1;
+              $passs = $_POST["passwords"];
+              $passn = $_POST["passwordn"];
+              //$email = $_POST["email"];
+              $hasloshash = hash('sha256',$passs);
+              $haslonhash = hash('sha256',$passn);
+              $id=$_SESSION['zalogowany'];
+              $sql="SELECT haslo,nick FROM konta WHERE nick='$id'";
+              foreach ($dbh->query($sql) as $konto)
+               {
+                  $sql2="UPDATE konta SET haslo='$haslonhash' WHERE nick='$id'";
+                  if($konto['haslo']==$hasloshash){
+                  $dbh->query($sql2);
+                  $flaga=0;
+                  }
                 }
-                else
-                if($konto['email'] == $email)
+                if($flaga==1)
                 {
-                $flaga=4;
-                break;
-              }else {
-                $flaga=0;
-              }
-              }
-              if($flaga == 0)
-              {
-                $admin = 0;
-                $rs = $dbh->prepare("INSERT INTO konta VALUES( NULL, :nick, :email, :admin, :haslohash) ");
-                $rs->execute([ ':nick' => $login , ':email' => $email , ':admin' => $admin , ':haslohash' => $haslohash]);
-                header('Location: index.php');
-                exit;
-              }else
-              if($flaga==3)
-              {
-                echo "<script type=\"text/javascript\">window.alert( \"Login zajety\" );</script>";
-                exit;
-              }else
-              if($flaga==4)
-              {
-                echo "<script type=\"text/javascript\">window.alert(\"email zajety\" );</script>";
-                exit;
+                  echo "<script type=\"text/javascript\">window.alert(\"bledne haslo\" );</script>";
+                  exit;
+                }
+            }
+            if(isset($_POST["email"]) )
+            {
+              $flaga=0;
+              $email = $_POST["email"];
+              $id=$_SESSION['zalogowany'];
+              $sql="SELECT email,nick FROM konta WHERE nick='$id'";
+              foreach ($dbh->query($sql) as $konto)
+               {
+                 if($konto['email']!=$email)
+                 {
+                   $flaga=1;
+                 }
+               }
+               if($flaga==1)
+               {
+                 echo "<script type=\"text/javascript\">window.alert(\"email zajety\" );</script>";
+                 exit;
+               }
+               if($flaga==0){
+                 $sql2="UPDATE konta SET email='$email' WHERE nick='$id'";
+                 $dbh->query($sql2);
               }
             }
           }

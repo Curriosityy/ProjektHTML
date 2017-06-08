@@ -46,6 +46,9 @@
                                   echo $_SESSION['zalogowany'];
                                   echo "</li>";
                                   echo "<li>";
+                                  echo "<a href=\"zmiana.php\">Zmiana</a>";
+                                  echo "</li>";
+                                  echo "<li>";
                                   echo "<a href=\"wyloguj.php\">wyloguj</a>";
                                   echo "</li>";
                               }else
